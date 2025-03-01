@@ -12,6 +12,7 @@
 #define ALINSHANS_REDBUD_IO_COLOR_H_
 
 #include "../platform.h"
+#include <cstdio>
 
 #if defined(REDBUD_LINUX) || defined(REDBUD_OSX)
   #include <unistd.h>  // getenv
@@ -19,6 +20,10 @@
 #elif defined(REDBUD_WIN)
   #include <Windows.h>
   #include <io.h>
+extern "C" {
+  int isatty(int fd);
+  int _fileno(FILE *);
+}
 #endif
 
 #include <cstdlib>
